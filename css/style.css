@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+/* font-family: 'Courgette', cursive; */
+/* ========================================================
+  Selectores de etiqueta
+  =========================================================  */
+html{
+  font-size: 62.5%;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Courgette', cursive;
+  list-style: none;
+  text-decoration: none;
+}
+body{
+  background-color: black;
+  color: rgb(255, 255, 255);
+}
+
+header{
+  background-image: url("../img/back01.jpg");
+}
+
+article{
+  border: solid snow 1px;
+}
+
+h1,h2 {
+  display: none;
+}
+
+/* ========================================================
+  Selectores de clases
+  =========================================================  */
+
+.fontSize{
+  font-size: 3rem;
+  text-align: center;
+}
+
+.fontSize2{
+  font-size: 2rem;
+  text-align: center;
+}
+
+.fontSize2b{
+  font-size: 2rem;
+  color: black;  
+}
+
+.fonth{
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.card{
+  background: black;
+  color: snow;
+  border: 1px solid snow;
+}
+
+.busqueda{
+  color: snow;
+}
+.carrito p{
+  font-size: 2rem;
+}
+
+.submenu{
+  position: relative;
+}
+
+.submenu .carrito{
+  display: none;
+  border-radius: 5px;
+}
+.submenu:hover .carrito{
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  background-color: white;
+  position: absolute;
+  top:100%;
+}
+
+.submenu button{
+  width: 40%;
+}
