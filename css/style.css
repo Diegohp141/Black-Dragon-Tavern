@@ -58,7 +58,10 @@ h1,h2 {
 .card{
   background: black;
   color: snow;
-  border: 1px solid snow;
+}
+
+.card:hover{  
+  border: 7px double snow;
 }
 
 .busqueda{
