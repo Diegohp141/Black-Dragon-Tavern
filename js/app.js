@@ -36,6 +36,13 @@ const h2 = $(`.titulos h2`);
 function mostrarCarrito(){
   const carritoStorage = JSON.parse(localStorage.getItem('carrito'));
 	carrito = carritoStorage || [];
+  carrito.forEach(item => {
+    bebidas.forEach(bebida => {
+      if(item.id === bebida.id){
+        bebida.contador = item.contador
+      }
+    });
+  });
   llenarHTMl()
   return carrito
 }
@@ -150,11 +157,9 @@ function vaciarHTMl(item){
 function analizarCarrito(bebida){
   if(carrito?.length){
     carrito.forEach(item => {
-      if(bebida.producto === item.producto){
-        item.contador++
-      }else{
+      if(item.id != bebida.id){
         carrito.push(bebida)
-      }
+      } 
     });
   } else{
     carrito.push(bebida);
