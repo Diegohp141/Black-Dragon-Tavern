@@ -79,19 +79,19 @@ function cargarCarrito(bebida){
     case 1:
       totalCompra = totalCompra + bebida.precio;
       bebida.contador ++;    
-      break;
+      break
     case 2:
       totalCompra = totalCompra + bebida.precio;
       bebida.contador ++;    
-      break;
+      break
     case 3:
       totalCompra = totalCompra + bebida.precio;
       bebida.contador ++;    
-      break;
+      break
     case 4:
       totalCompra = totalCompra + bebida.precio;
       bebida.contador ++;    
-      break;
+      break
     case 5:
       totalCompra = totalCompra + bebida.precio;
       bebida.contador ++;    
@@ -99,17 +99,17 @@ function cargarCarrito(bebida){
     case 6:
       totalCompra = totalCompra + bebida.precio;
       bebida.contador ++;    
-      break;
+      break
     case 7:
       totalCompra = totalCompra + bebida.precio;
       bebida.contador ++;    
-      break;
+      break
     case 8 :
       totalCompra = totalCompra + bebida.precio;
       bebida.contador ++;    
-      break;
+      break
     default:
-      break;
+      break
   }
   if (bebida.contador != 0){
     analizarCarrito(bebida)
