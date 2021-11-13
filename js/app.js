@@ -11,7 +11,7 @@ class Bebida{
     this.contador = 0;
   }
 };
-//Array
+//Array bebidas // Drinks
 const bebidas = [];
 bebidas.push(new Bebida(`Healing Potion`, `Vino (Malbec)`, `Elementos`, `750ML`, 250, 1));
 bebidas.push(new Bebida(`Charm Potion`, `Vino (Torrontes)`, `Elementos `, `750ML`, 350, 2));
@@ -22,7 +22,7 @@ bebidas.push(new Bebida(`Elixir of Stealth`, `Ron`, `Flor de Caña`, `750ML`, 16
 bebidas.push(new Bebida(`disinhibition Potion`, `Fernet`, `Branca`, `750ML`, 720, 7));
 bebidas.push(new Bebida(`Elixir of Sweetening`, `Cola`, `Coca-Cola`, `2.25L`, 232.30,8));
 
-//selectores
+//selectores // selectors
 const htmlproductos = document.querySelector(`.productos`);
 const listaImagen = $(`.listaImagen`);
 const listaProductos = $(`.listaProductos`);
@@ -31,7 +31,8 @@ const listaPrecio = $(`.listaPrecio`);
 const h1 = $(`.titulos h1`);
 const h2 = $(`.titulos h2`);
 //funciones
-//mostrar carrito
+
+//mostrar carrito // show(load) cart
 
 function mostrarCarrito(){
   const carritoStorage = JSON.parse(localStorage.getItem('carrito'));
@@ -47,7 +48,7 @@ function mostrarCarrito(){
   return carrito
 }
 mostrarCarrito()
-//renderizar productos
+//renderizar productos //render products 
 
 function renderizar(){
   bebidas.forEach(bebida => {
@@ -73,6 +74,7 @@ function renderizar(){
 }
 renderizar();
 
+//cargar carrito // fill cart
 function cargarCarrito(bebida){
 
   switch (click) {
@@ -118,17 +120,22 @@ function cargarCarrito(bebida){
   localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
+//funcion para que se muestre el nombre del producto en el carrito // function to display the product name in the cart
 function lProducto(item){
   listaProductos.append(`<li id="producto${item.id}">${item.producto}</li>`);
 }
 
+////funcion para que se muestre la cantidad del producto en el carrito // function to display the amount in the cart
 function lCantidad(item){
   listaCantidad.append(`<li id="contador${item.id}">${item.contador}</li>`);
 }
 
+////funcion para que se muestre el precio del producto en el carrito // function to display the price of the product in the cart
 function lPrecio(item){
   listaPrecio.append(`<li id="precio${item.id}">${item.precio}</li>`);
 }
+
+//funcion para llenar el carrito en el html // function to gill the html
 function llenarHTMl(){
   /* carrito = mostrarCarrito() */
   if(carrito?.length){
@@ -148,12 +155,14 @@ function llenarHTMl(){
 
 llenarHTMl();
 
+//funcion para vaciar el carrito en el html //function to empty the cart in the html
 function vaciarHTMl(item){
   $(`#producto${item.id}`).remove()
   $(`#contador${item.id}`).remove()
   $(`#precio${item.id}`).remove()
 }
 
+//funcion para usar en la funcion de pushear items en el carrito //function to use in the function to push item into the cart
 function analizarCarrito(bebida){
   if(carrito?.length){
     carrito.forEach(item => {
@@ -173,6 +182,8 @@ h2.fadeIn(3000)
 let click = 0;
 let totalCompra = 0;
 //Logica
+
+//funcion principal para llenar el carrito //main function to fill the array cart
 bebidas.forEach(bebida => { 
   const boton = document.querySelector(`#boton${bebida.id}`);
   boton.addEventListener("click",() => {
@@ -182,7 +193,7 @@ bebidas.forEach(bebida => {
   });  
 });
 
-
+//funcion para confimar compra // function to confirm purchase
 const compras = document.querySelector(`.carrito .btn-outline-success`)
 compras.addEventListener("click", () => {
   carrito.forEach(item => {
@@ -198,6 +209,7 @@ compras.addEventListener("click", () => {
   )
 })
 
+//funcion para vaciar carrito // function to empty array cart
 const botonVaciar = document.querySelector(`.btn-outline-danger`)
 botonVaciar.addEventListener(`click`,() => {
   carrito.forEach(item => {
