@@ -1,3 +1,6 @@
+//variables
+let click = 0;
+let totalCompra = 0;
 let carrito;
 
 class Bebida{
@@ -31,6 +34,7 @@ const listaCantidad = $(`.listaCantidad`);
 const listaPrecio = $(`.listaPrecio`);
 const h1 = $(`.titulos h1`);
 const h2 = $(`.titulos h2`);
+const total = document.querySelector(`.total`);
 //funciones
 
 //mostrar carrito // show(load) cart
@@ -42,6 +46,7 @@ function mostrarCarrito(){
     bebidas.forEach(bebida => {
       if(item.id === bebida.id){
         bebida.contador = item.contador
+        totalCompra = totalCompra + item.precio
       }
     });
   });
@@ -178,6 +183,7 @@ function llenarHTMl(){
       lCantidad(item)
       lPrecio(item)
     });
+    mostrarTotal()
   }
   /* carrito.forEach(item => {
     lProducto(item)
@@ -193,15 +199,8 @@ function vaciarHTMl(item){
   $(`#producto${item.id}`).remove()
   $(`#contador${item.id}`).remove()
   $(`#precio${item.id}`).remove()
+  total.innerHTML = ""
 }
-
-//animaciones
-h1.fadeIn(3000)
-h2.fadeIn(3000)
-//variables
-let click = 0;
-let totalCompra = 0;
-//Logica
 
 //funcion principal para llenar el carrito //main function to fill the array cart
 bebidas.forEach(bebida => { 
@@ -210,6 +209,7 @@ bebidas.forEach(bebida => {
     click = bebida.id;
     cargarCarrito(bebida)
     llenarHTMl()
+
   });  
 });
 
@@ -227,6 +227,7 @@ compras.addEventListener("click", () => {
     'vas a recibir tu pedido pronto!',
     'success'
   )
+  totalCompra = 0;
 })
 
 //funcion para vaciar carrito // function to empty array cart
@@ -238,4 +239,14 @@ botonVaciar.addEventListener(`click`,() => {
   })
   localStorage.clear();
   carrito = [];
+  totalCompra = 0;
 })
+
+function mostrarTotal(){
+  total.innerHTML = `Total ${totalCompra}`
+}
+
+
+//animaciones
+h1.fadeIn(3000)
+h2.fadeIn(3000)
