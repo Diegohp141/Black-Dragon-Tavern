@@ -51,8 +51,8 @@ function mostrarCarrito(){
 mostrarCarrito()
 //renderizar productos //render products 
 
-function renderizar(){
-  bebidas.forEach(bebida => {
+function renderizar(array){
+  array.forEach(bebida => {
     const section = document.createElement(`div`)
     section.classList.add(`col-lg-3`)
     section.classList.add(`col-md-6`)
@@ -73,7 +73,7 @@ function renderizar(){
     htmlproductos.appendChild(section);  
   });
 }
-renderizar();
+renderizar(bebidas);
 
 //funcion formulario prevenir default
 formulario.addEventListener('submit',busqueda);
@@ -82,11 +82,13 @@ formulario.addEventListener('submit',busqueda);
 
 function busqueda(e){
   e.preventDefault();
-  const input = document.querySelector(`.form-control`).value;
+  const input = document.querySelector(`.form-control`).value.toLowerCase().trim();
+  const resultado = bebidas.filter(buscado => buscado.producto.toLowerCase().includes(input) )
   if(input != ``){
     htmlproductos.innerHTML = ``
+    renderizar(resultado)
   } else {
-    renderizar();
+    renderizar(bebidas);
   }
 }
 
