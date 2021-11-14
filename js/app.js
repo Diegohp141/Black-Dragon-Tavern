@@ -242,6 +242,7 @@ botonVaciar.addEventListener(`click`,() => {
   totalCompra = 0;
 })
 
+//funcion para agergar total al Html // function to show in the html the total to pay 
 function mostrarTotal(){
   total.innerHTML = `Total ${totalCompra}`
 }
