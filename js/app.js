@@ -88,6 +88,7 @@ function busqueda(e){
     htmlproductos.innerHTML = ``
     renderizar(resultado)
   } else {
+    htmlproductos.innerHTML = ``
     renderizar(bebidas);
   }
 }

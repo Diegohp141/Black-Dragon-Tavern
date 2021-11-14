@@ -73,8 +73,6 @@ h1,h2 {
 
 
 .submenu{
-  width: 10%;
-  margin: 0;
   position: relative;
 }
 
@@ -93,4 +91,9 @@ h1,h2 {
 
 .submenu button{
   width: 40%;
+}
+
+.margin{  
+  width: 10%;
+  margin: 0;  
 }
