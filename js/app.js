@@ -24,6 +24,7 @@ bebidas.push(new Bebida(`Elixir of Sweetening`, `Cola`, `Coca-Cola`, `2.25L`, 23
 
 //selectores // selectors
 const htmlproductos = document.querySelector(`.productos`);
+const formulario = document.querySelector(`.buscador`);
 const listaImagen = $(`.listaImagen`);
 const listaProductos = $(`.listaProductos`);
 const listaCantidad = $(`.listaCantidad`);
@@ -73,6 +74,22 @@ function renderizar(){
   });
 }
 renderizar();
+
+//funcion formulario prevenir default
+formulario.addEventListener('submit',busqueda);
+
+//funcion para buscar producto
+
+function busqueda(e){
+  e.preventDefault();
+  const input = document.querySelector(`.form-control`).value;
+  if(input != ``){
+    htmlproductos.innerHTML = ``
+  } else {
+    renderizar();
+  }
+}
+
 
 //cargar carrito // fill cart
 function cargarCarrito(bebida){
@@ -174,8 +191,6 @@ function vaciarHTMl(item){
   $(`#contador${item.id}`).remove()
   $(`#precio${item.id}`).remove()
 }
-
-
 
 //animaciones
 h1.fadeIn(3000)
