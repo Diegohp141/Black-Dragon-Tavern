@@ -148,11 +148,15 @@ function cargarCarrito(bebida){
 //funcion para usar en la funcion de pushear items en el carrito //function to use in the function to push item into the cart
 function analizarCarrito(bebida){
   if(carrito?.length){
-    carrito.forEach(item => {
+    const newCarrito = [];
+    newCarrito.push(bebida);
+    const Resultado = newCarrito.find(elemento => elemento === bebida);
+    console.log(Resultado);
+    /* carrito.forEach(item => {
       if(item.id != bebida.id){
         carrito.push(bebida)
       } 
-    });
+    }); */
   } else{
     carrito.push(bebida);
   }
