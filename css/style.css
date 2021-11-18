@@ -107,3 +107,11 @@ h1,h2 {
   font-size: 2rem;
   align-self: center;
 }
+
+.bcolor{
+  color: black;
+}
+
+.border{
+  border: solid black 1px;
+}

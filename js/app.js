@@ -28,10 +28,7 @@ bebidas.push(new Bebida(`Elixir of Sweetening`, `Cola`, `Coca-Cola`, `2.25L`, 23
 //selectores // selectors
 const htmlproductos = document.querySelector(`.productos`);
 const formulario = document.querySelector(`.buscador`);
-const listaImagen = $(`.listaImagen`);
 const listaProductos = $(`.listaProductos`);
-const listaCantidad = $(`.listaCantidad`);
-const listaPrecio = $(`.listaPrecio`);
 const h1 = $(`.titulos h1`);
 const h2 = $(`.titulos h2`);
 const total = document.querySelector(`.total`);
@@ -157,37 +154,42 @@ function analizarCarrito(bebida){
   }
 }
 
-//funcion para que se muestre el nombre del producto en el carrito // function to display the product name in the cart
-function lProducto(item){
-  listaProductos.append(`<li id="producto${item.id}">${item.producto}</li>`);
-}
-
-////funcion para que se muestre la cantidad del producto en el carrito // function to display the amount in the cart
-function lCantidad(item){
-  const cantidad = `
-    <li class="d-flex justify-content-evenly" id="contador${item.id}">
-      <i class="far fa-plus-square w-25" id=add${item.tipoBebida}></i>
-      <input type="text" class="form-control w-25" id="input${item.id}" value="${item.contador}">
-      <i class="far fa-minus-square w-25" id=rest${item.tipoBebida}></i>
-    </li>
+//funcion para que se muestren produtos del carrito
+function ulCarrito(item){
+  const nuevoProducto = `
+    <ul class="row" id="producto${item.id}">
+      <li class="fontSize2b text-center col-4" id="producto${item.id}">${item.producto}</li>
+      <li class="d-flex justify-content-evenly text-center col-4" id="contador${item.id}">
+        <button type="button" class="btn btn-outline-primary w-25">
+          <i id="add${item.id}" class="far fa-plus-square"></i>
+        </button>              
+        <input type="text" class="form-control text-center w-25" id="input${item.id}" value="${item.contador}">
+        <button type="button" class="btn btn-outline-primary w-25">
+          <i class="far fa-minus-square" id="rest${item.id}"></i>
+        </button>
+      </li>
+      <li class="fontSize2b text-center col-4" id="precio${item.id}">${item.precio}</li>      
+    </ul>
   `
-  listaCantidad.append(cantidad);
+  listaProductos.append(nuevoProducto)
 }
 
-////funcion para que se muestre el precio del producto en el carrito // function to display the price of the product in the cart
-function lPrecio(item){
-  listaPrecio.append(`<li id="precio${item.id}">${item.precio}</li>`);
+//funcion boton mas
+function mas(){  
+  carrito.forEach(element => {
+    const botonMas = document.querySelector(`#add${element.id}`);
+    botonMas.addEventListener('click', () => {      
+      element.contador ++
+    })
+  });
 }
-
 //funcion para llenar el carrito en el html // function to gill the html
 function llenarHTMl(){
   /* carrito = mostrarCarrito() */
   if(carrito?.length){
     carrito.forEach(item => {
       vaciarHTMl(item)
-      lProducto(item)
-      lCantidad(item)
-      lPrecio(item)
+      ulCarrito(item)
     });
     mostrarTotal()
   }
@@ -203,8 +205,6 @@ llenarHTMl();
 //funcion para vaciar el carrito en el html //function to empty the cart in the html
 function vaciarHTMl(item){
   $(`#producto${item.id}`).remove()
-  $(`#contador${item.id}`).remove()
-  $(`#precio${item.id}`).remove()
   total.innerHTML = ""
 }
 
