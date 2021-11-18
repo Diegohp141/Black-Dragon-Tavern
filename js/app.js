@@ -164,7 +164,14 @@ function lProducto(item){
 
 ////funcion para que se muestre la cantidad del producto en el carrito // function to display the amount in the cart
 function lCantidad(item){
-  listaCantidad.append(`<li id="contador${item.id}">${item.contador}</li>`);
+  const cantidad = `
+    <li class="d-flex justify-content-evenly" id="contador${item.id}">
+      <i class="far fa-plus-square w-25" id=add${item.tipoBebida}></i>
+      <input type="text" class="form-control w-25" id="input${item.id}" value="${item.contador}">
+      <i class="far fa-minus-square w-25" id=rest${item.tipoBebida}></i>
+    </li>
+  `
+  listaCantidad.append(cantidad);
 }
 
 ////funcion para que se muestre el precio del producto en el carrito // function to display the price of the product in the cart
@@ -250,3 +257,6 @@ function mostrarTotal(){
 //animaciones
 h1.fadeIn(3000)
 h2.fadeIn(3000)
+
+/* icono mas: <i class="far fa-plus-square"></i> */
+/* icono menos: <i class="far fa-minus-square"></i>*/
