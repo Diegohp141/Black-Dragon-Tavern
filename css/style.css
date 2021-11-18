@@ -31,6 +31,7 @@ h1,h2 {
   display: none;
 }
 
+
 /* ========================================================
   Selectores de clases
   =========================================================  */
@@ -96,4 +97,13 @@ h1,h2 {
 .margin{  
   width: 10%;
   margin: 0;  
+}
+
+.form-control{
+  font-size: 2rem;
+}
+
+.far{
+  font-size: 2rem;
+  align-self: center;
 }
