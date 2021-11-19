@@ -212,7 +212,40 @@ bebidas.forEach(bebida => {
     });  
 });
 
-//funcion boton mas
+//funciones para el input carrito
+
+function inputCarrito(array){
+  if (array?.length){
+    array.forEach(item => {
+      const valorInput = document.querySelector(`#input${item.id}`)
+      add(item, valorInput)
+      resta (item, valorInput)
+    })
+  }
+}
+//funcion add
+function add (item, valorInput) {
+  const BotonAdd = document.querySelector(`#add${item.id}`)
+  BotonAdd.addEventListener("click",() =>{
+    item.contador++;
+    totalCompra = totalCompra + item.precio;
+    valorInput.value = item.contador
+  })
+}
+
+//funcion resta
+function resta (item, valorInput) {
+  const BotonAdd = document.querySelector(`#rest${item.id}`)
+  BotonAdd.addEventListener("click",() =>{
+    item.contador--;
+    totalCompra = totalCompra - item.precio;
+    valorInput.value = item.contador
+  })
+}
+
+
+
+inputCarrito(carrito)
 
 
 //funcion para confimar compra // function to confirm purchase
