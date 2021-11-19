@@ -39,14 +39,15 @@ const total = document.querySelector(`.total`);
 function mostrarCarrito(){
   const carritoStorage = JSON.parse(localStorage.getItem('carrito'));
 	carrito = carritoStorage || [];
-  carrito.forEach(item => {
-    bebidas.forEach(bebida => {
-      if(item.id === bebida.id){
-        bebida.contador = item.contador
-        totalCompra = totalCompra + item.precio
-      }
-    });
-  });
+  if(carrito?.length){
+    carrito.filter(item => {
+      bebidas.filter(bebida =>{
+        if (bebida.id == item.id){
+          bebida.contador = item.contador
+        }
+      })
+    })
+  }  
   llenarHTMl()
   return carrito
 }
@@ -72,7 +73,7 @@ function renderizar(array){
         </div>
             
       `;      
-    htmlproductos.appendChild(section);  
+    htmlproductos.appendChild(section);      
   });
 }
 renderizar(bebidas);
@@ -148,7 +149,7 @@ function analizarCarrito(bebida){
     const index = carrito.findIndex(item => item.id === bebida.id)
     if (index == -1){
       carrito.push(bebida);
-    }
+    } 
   } else{
     carrito.push(bebida);
   }
@@ -168,7 +169,7 @@ function ulCarrito(item){
           <i class="far fa-minus-square"></i>
         </button>
       </li>
-      <li class="fontSize2b text-center col-4" id="precio${item.id}">${item.precio}</li>      
+      <li class="fontSize2b text-center col-4" id="precio${item.id}">${item.precio * item.contador}</li>      
     </ul>
   `
   listaProductos.append(nuevoProducto)
@@ -200,23 +201,17 @@ function vaciarHTMl(item){
 }
 
 //funcion principal para llenar el carrito //main function to fill the array cart
-bebidas.forEach(bebida => { 
+bebidas.forEach(bebida => {
   const boton = document.querySelector(`#boton${bebida.id}`);
-  boton.addEventListener("click",() => {
+    boton.addEventListener("click",() => {
     click = bebida.id;
     cargarCarrito(bebida)
     llenarHTMl()
-
-  });  
+    });  
 });
 
 //funcion boton mas
-carrito.forEach(elemento => {
-  const botonAdd = document.querySelector(`#add${elemento.id}`)
-  const inputCarrito = document.querySelector(`#input${elemento.id}`);
-  console.log(botonAdd);
-  console.log(inputCarrito);
-})
+
 
 //funcion para confimar compra // function to confirm purchase
 const compras = document.querySelector(`.carrito .btn-outline-success`)
