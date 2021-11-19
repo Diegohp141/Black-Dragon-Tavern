@@ -41,6 +41,15 @@ function mostrarCarrito(){
 	carrito = carritoStorage || [];
   const arrayTotales = carrito.map(elemento => (elemento.precio * elemento.contador))
   totalCompra = arrayTotales.reduce((resultado, numeros) => resultado + numeros ,0)
+  if(carrito?.length){
+    carrito.filter(item => {
+      bebidas.filter(bebida =>{
+        if (item.id === bebida.id){
+          bebida.contador = item.contador
+        }
+      })
+    })
+  }
   llenarHTMl()
   return carrito
 }
@@ -141,7 +150,13 @@ function analizarCarrito(bebida){
     const index = carrito.findIndex(item => item.id === bebida.id)
     if (index == -1){
       carrito.push(bebida);
-    } 
+    } else {
+      carrito.filter(elemento => {
+        if (elemento.id === bebida.id){
+          elemento.contador = bebida.contador
+        }
+      })
+    }
   } else{
     carrito.push(bebida);
   }
@@ -177,11 +192,6 @@ function llenarHTMl(){
     });
     mostrarTotal()
   }
-  /* carrito.forEach(item => {
-    lProducto(item)
-    lCantidad(item)
-    lPrecio(item)
-  }); */
 }
 
 llenarHTMl();
