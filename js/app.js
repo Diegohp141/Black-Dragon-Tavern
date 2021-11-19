@@ -243,6 +243,11 @@ function resta (item, valorInput) {
   })
 }
 
+//funcion ingreso cantidad manual
+function usoInput(item, valorInput){
+  
+}
+
 
 
 inputCarrito(carrito)
