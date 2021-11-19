@@ -160,12 +160,12 @@ function ulCarrito(item){
     <ul class="row" id="producto${item.id}">
       <li class="fontSize2b text-center col-4" id="producto${item.id}">${item.producto}</li>
       <li class="d-flex justify-content-evenly text-center col-4" id="contador${item.id}">
-        <button type="button" class="btn btn-outline-primary w-25">
-          <i id="add${item.id}" class="far fa-plus-square"></i>
+        <button id="add${item.id}" type="button" class="btn btn-outline-primary w-25">
+          <i class="far fa-plus-square"></i>
         </button>              
         <input type="text" class="form-control text-center w-25" id="input${item.id}" value="${item.contador}">
-        <button type="button" class="btn btn-outline-primary w-25">
-          <i class="far fa-minus-square" id="rest${item.id}"></i>
+        <button id="rest${item.id}" type="button" class="btn btn-outline-primary w-25">
+          <i class="far fa-minus-square"></i>
         </button>
       </li>
       <li class="fontSize2b text-center col-4" id="precio${item.id}">${item.precio}</li>      
@@ -174,15 +174,6 @@ function ulCarrito(item){
   listaProductos.append(nuevoProducto)
 }
 
-//funcion boton mas
-function mas(){  
-  carrito.forEach(element => {
-    const botonMas = document.querySelector(`#add${element.id}`);
-    botonMas.addEventListener('click', () => {      
-      element.contador ++
-    })
-  });
-}
 //funcion para llenar el carrito en el html // function to gill the html
 function llenarHTMl(){
   /* carrito = mostrarCarrito() */
@@ -219,6 +210,14 @@ bebidas.forEach(bebida => {
   });  
 });
 
+//funcion boton mas
+carrito.forEach(elemento => {
+  const botonAdd = document.querySelector(`#add${elemento.id}`)
+  const inputCarrito = document.querySelector(`#input${elemento.id}`);
+  console.log(botonAdd);
+  console.log(inputCarrito);
+})
+
 //funcion para confimar compra // function to confirm purchase
 const compras = document.querySelector(`.carrito .btn-outline-success`)
 compras.addEventListener("click", () => {
@@ -226,6 +225,7 @@ compras.addEventListener("click", () => {
     vaciarHTMl(item);
     item.contador = 0;
   })
+  bebidas.forEach(bebida => bebida.contador = 0);
   localStorage.clear();
   carrito = []
   Swal.fire(
@@ -243,6 +243,7 @@ botonVaciar.addEventListener(`click`,() => {
     vaciarHTMl(item);
     item.contador = 0;
   })
+  bebidas.forEach(bebida => bebida.contador = 0);
   localStorage.clear();
   carrito = [];
   totalCompra = 0;
