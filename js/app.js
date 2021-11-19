@@ -39,15 +39,8 @@ const total = document.querySelector(`.total`);
 function mostrarCarrito(){
   const carritoStorage = JSON.parse(localStorage.getItem('carrito'));
 	carrito = carritoStorage || [];
-  if(carrito?.length){
-    carrito.filter(item => {
-      bebidas.filter(bebida =>{
-        if (bebida.id == item.id){
-          bebida.contador = item.contador
-        }
-      })
-    })
-  }  
+  const arrayTotales = carrito.map(elemento => (elemento.precio * elemento.contador))
+  totalCompra = arrayTotales.reduce((resultado, numeros) => resultado + numeros ,0)
   llenarHTMl()
   return carrito
 }
@@ -99,7 +92,6 @@ function busqueda(e){
 
 //cargar carrito // fill cart
 function cargarCarrito(bebida){
-
   switch (click) {
     case 1:
       totalCompra = totalCompra + bebida.precio;
