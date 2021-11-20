@@ -245,10 +245,9 @@ function resta (item, valorInput) {
 
 //funcion ingreso cantidad manual
 function usoInput(item, valorInput){
-  
+  totalCompra = totalCompra - (item.precio * item.contador);
+  valorInput.addEventListener()
 }
-
-
 
 inputCarrito(carrito)
 
