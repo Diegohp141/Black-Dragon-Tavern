@@ -23,7 +23,7 @@ bebidas.push(new Bebida(`Elixir of Courage`, `Cerveza`, `Corona`, `710ML`, 280,4
 bebidas.push(new Bebida(`Elixir of Strength`, `Whisky`, `Johnnie Walker Red Label`, `1L`, 2550,5));
 bebidas.push(new Bebida(`Elixir of Stealth`, `Ron`, `Flor de Caña`, `750ML`, 1650,6));
 bebidas.push(new Bebida(`disinhibition Potion`, `Fernet`, `Branca`, `750ML`, 720, 7));
-bebidas.push(new Bebida(`Elixir of Sweetening`, `Cola`, `Coca-Cola`, `2.25L`, 232.30,8));
+bebidas.push(new Bebida(`Elixir of Sweetening`, `Cola`, `Coca-Cola`, `2.25L`, 233,8));
 
 //selectores // selectors
 const htmlproductos = document.querySelector(`.productos`);
@@ -91,10 +91,28 @@ function busqueda(e){
   const resultado = bebidas.filter(buscado => buscado.producto.toLowerCase().includes(input) )
   if(input != ``){
     htmlproductos.innerHTML = ``
-    renderizar(resultado)
+    renderizar(resultado);
+    resultado.forEach(bebida => {
+      const boton = document.querySelector(`#boton${bebida.id}`)
+      boton.addEventListener("click", () => {
+        click = bebida.id
+        cargarCarrito(bebida)
+        llenarHTMl()
+        inputCarrito(carrito)
+      })
+    });
   } else {
     htmlproductos.innerHTML = ``
     renderizar(bebidas);
+    bebidas.forEach(bebida => {
+      const boton = document.querySelector(`#boton${bebida.id}`)
+      boton.addEventListener("click", () => {
+        click = bebida.id
+        cargarCarrito(bebida)
+        llenarHTMl()
+        inputCarrito(carrito)
+      })
+    });
   }
 }
 
