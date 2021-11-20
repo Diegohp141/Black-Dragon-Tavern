@@ -39,8 +39,8 @@ const total = document.querySelector(`.total`);
 function mostrarCarrito(){
   const carritoStorage = JSON.parse(localStorage.getItem('carrito'));
 	carrito = carritoStorage || [];
-  const arrayTotales = carrito.map(elemento => (elemento.precio * elemento.contador))
-  totalCompra = arrayTotales.reduce((resultado, numeros) => resultado + numeros ,0)
+  const arrayTotales = carrito.map(elemento => (elemento.precio * elemento.contador));
+  totalCompra = arrayTotales.reduce((resultado, numeros) => resultado + numeros ,0);
   if(carrito?.length){
     carrito.filter(item => {
       bebidas.filter(bebida =>{
@@ -165,7 +165,7 @@ function analizarCarrito(bebida){
 //funcion para que se muestren produtos del carrito
 function ulCarrito(item){
   const nuevoProducto = `
-    <ul class="row" id="producto${item.id}">
+    <ul class="row mb-3" id="producto${item.id}">
       <li class="fontSize2b text-center col-4" id="producto${item.id}">${item.producto}</li>
       <li class="d-flex justify-content-evenly text-center col-4" id="contador${item.id}">
         <button id="add${item.id}" type="button" class="btn btn-outline-primary w-25">
@@ -207,8 +207,9 @@ bebidas.forEach(bebida => {
   const boton = document.querySelector(`#boton${bebida.id}`);
     boton.addEventListener("click",() => {
     click = bebida.id;
-    cargarCarrito(bebida)
+    cargarCarrito(bebida)    
     llenarHTMl()
+    inputCarrito(carrito)
     });  
 });
 
@@ -218,38 +219,83 @@ function inputCarrito(array){
   if (array?.length){
     array.forEach(item => {
       const valorInput = document.querySelector(`#input${item.id}`)
-      add(item, valorInput)
-      resta (item, valorInput)
-    })
+      const tprecio = document.querySelector(`#precio${item.id}`)
+      add(item, valorInput, tprecio)
+      resta (item, valorInput, tprecio)
+      usoInput(item, valorInput, tprecio)
+    })    
   }
 }
 //funcion add
-function add (item, valorInput) {
+function add (item, valorInput, tprecio) {
   const BotonAdd = document.querySelector(`#add${item.id}`)
   BotonAdd.addEventListener("click",() =>{
     item.contador++;
     totalCompra = totalCompra + item.precio;
     valorInput.value = item.contador
+    bebidas.find(bebida => {
+      if (bebida.id === item.id){
+        bebida.contador = item.contador
+      }
+    })
+    console.log(totalCompra);
+    actualizarStorage()
+    tprecio.textContent = item.precio * item.contador;
+    total.textContent = `Total ${totalCompra}`;
   })
 }
 
 //funcion resta
-function resta (item, valorInput) {
+function resta (item, valorInput, tprecio) {
   const BotonAdd = document.querySelector(`#rest${item.id}`)
   BotonAdd.addEventListener("click",() =>{
     item.contador--;
     totalCompra = totalCompra - item.precio;
     valorInput.value = item.contador
+    bebidas.find(bebida => {
+      if (bebida.id === item.id){
+        bebida.contador = item.contador
+      }
+    })
+    if (item.contador == 0 ){
+      carrito = carrito.filter(elemento => elemento.contador != 0 );
+      const eliminarUl = document.querySelector(`#producto${item.id}`)
+      eliminarUl.parentElement.removeChild(eliminarUl);
+    }
+    actualizarStorage()
+    console.log(totalCompra);
+    tprecio.textContent = item.precio * item.contador;
+    total.textContent = `Total ${totalCompra}`;
   })
 }
 
 //funcion ingreso cantidad manual
-function usoInput(item, valorInput){
-  totalCompra = totalCompra - (item.precio * item.contador);
-  valorInput.addEventListener()
+function usoInput(item, valorInput, tprecio){
+  valorInput.addEventListener("keydown",(event) => {
+    const keyName = event.key;
+    if (keyName === "Enter"){
+      totalCompra = totalCompra - (item.precio * item.contador);
+      item.contador = Number(valorInput.value);
+      totalCompra = totalCompra + (item.precio * item.contador);
+      bebidas.find(bebida => {
+        if (bebida.id === item.id){
+          bebida.contador = item.contador
+        }
+      })
+      if (item.contador == 0 ){
+        carrito = carrito.filter(elemento => elemento.contador != 0 );
+        const eliminarUl = document.querySelector(`#producto${item.id}`)
+        eliminarUl.parentElement.removeChild(eliminarUl);
+      }
+      actualizarStorage()
+      console.log(totalCompra);
+      tprecio.textContent = item.precio * item.contador;
+      total.textContent = `Total ${totalCompra}`; 
+    }
+  })
 }
 
-inputCarrito(carrito)
+
 
 
 //funcion para confimar compra // function to confirm purchase
@@ -288,7 +334,14 @@ function mostrarTotal(){
   total.innerHTML = `Total ${totalCompra}`
 }
 
+//funcion para catualizar el storage
+function actualizarStorage(){
+  localStorage.clear()
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+}
 
+
+inputCarrito(carrito)
 //animaciones
 h1.fadeIn(3000)
 h2.fadeIn(3000)
