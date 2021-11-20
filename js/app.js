@@ -88,7 +88,7 @@ formulario.addEventListener('submit',busqueda);
 function busqueda(e){
   e.preventDefault();
   const input = document.querySelector(`.form-control`).value.toLowerCase().trim();
-  const resultado = bebidas.filter(buscado => buscado.producto.toLowerCase().includes(input) )
+  const resultado = bebidas.filter(buscado => buscado.tipoBebida.toLowerCase().includes(input) )
   if(input != ``){
     htmlproductos.innerHTML = ``
     renderizar(resultado);
@@ -114,6 +114,7 @@ function busqueda(e){
       })
     });
   }
+  formulario.reset()
 }
 
 
@@ -255,8 +256,7 @@ function add (item, valorInput, tprecio) {
       if (bebida.id === item.id){
         bebida.contador = item.contador
       }
-    })
-    console.log(totalCompra);
+    })    
     actualizarStorage()
     tprecio.textContent = item.precio * item.contador;
     total.textContent = `Total ${totalCompra}`;
@@ -280,8 +280,7 @@ function resta (item, valorInput, tprecio) {
       const eliminarUl = document.querySelector(`#producto${item.id}`)
       eliminarUl.parentElement.removeChild(eliminarUl);
     }
-    actualizarStorage()
-    console.log(totalCompra);
+    actualizarStorage()    
     tprecio.textContent = item.precio * item.contador;
     total.textContent = `Total ${totalCompra}`;
   })
@@ -305,8 +304,7 @@ function usoInput(item, valorInput, tprecio){
         const eliminarUl = document.querySelector(`#producto${item.id}`)
         eliminarUl.parentElement.removeChild(eliminarUl);
       }
-      actualizarStorage()
-      console.log(totalCompra);
+      actualizarStorage()      
       tprecio.textContent = item.precio * item.contador;
       total.textContent = `Total ${totalCompra}`; 
     }
