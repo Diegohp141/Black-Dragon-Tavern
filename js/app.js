@@ -356,6 +356,31 @@ function actualizarStorage(){
   localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
+//funcion submenu toggle class
+const carritoImg = document.querySelector(`#imgCarrito`);
+const carritoDesplegar = document.querySelector(`.carrito`);
+console.log(carritoDesplegar);
+
+
+function carritoToggle(){
+
+  carritoImg.addEventListener("mouseenter", () => {
+    carritoDesplegar.classList.toggle(`hide`);
+    carritoDesplegar.classList.toggle(`show`);
+  })
+
+  carritoImg.addEventListener("click", () => {
+    carritoDesplegar.classList.toggle(`hide`);
+    carritoDesplegar.classList.toggle(`show`);
+  })
+
+  carritoDesplegar.addEventListener("mouseleave", () => {
+    carritoDesplegar.classList.toggle(`hide`);
+    carritoDesplegar.classList.toggle(`show`);
+  })
+}
+
+carritoToggle()
 
 inputCarrito(carrito)
 //animaciones

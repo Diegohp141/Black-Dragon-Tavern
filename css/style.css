@@ -77,11 +77,11 @@ h1,h2 {
   position: relative;
 }
 
-.submenu .carrito{
+.hide{
   display: none;
   border-radius: 5px;
 }
-.submenu:hover .carrito{
+.show{
   display: flex;
   flex-direction: column;
   z-index: 1;
@@ -90,7 +90,7 @@ h1,h2 {
   top:100%;
 }
 
-.submenu button{
+.hide button{
   width: 40%;
 }
 
