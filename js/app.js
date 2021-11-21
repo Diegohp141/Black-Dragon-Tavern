@@ -7,7 +7,7 @@ let carrito;
 //Array bebidas // Drinks
 const bebidas = [];
 
-$.getJson('bebidas.json', function(data){
+$.getJSON('../bebidas.json', function(data){
   data.forEach(item => bebidas.push(item))
   renderizar(bebidas);
   funcionesCarrito(bebidas)
@@ -349,7 +349,6 @@ function actualizarStorage(){
 //funcion submenu toggle class
 const carritoImg = document.querySelector(`#imgCarrito`);
 const carritoDesplegar = document.querySelector(`.carrito`);
-console.log(carritoDesplegar);
 
 
 function carritoToggle(){

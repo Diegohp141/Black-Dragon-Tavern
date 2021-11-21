@@ -1,6 +1,6 @@
 [
   {
-    "productos" : "Healing Potion",
+    "producto" : "Healing Potion",
     "tipoBebida" : "Vino (Malbec)",
     "marca" : "Elementos",
     "tamaño" : "750ML",
@@ -9,7 +9,7 @@
     "contador" : 0
   },
   {
-    "productos" : "Charm Potion",
+    "producto" : "Charm Potion",
     "tipoBebida" : "Vino (Torrontes)",
     "marca" : "Elementos",
     "tamaño" : "750ML",
@@ -18,7 +18,7 @@
     "contador" : 0
   },
   {
-    "productos" : "Mana Potion",
+    "producto" : "Mana Potion",
     "tipoBebida" : "Gin",
     "marca" : "Bombay Sapphire",
     "tamaño" : "750ML",
@@ -27,7 +27,7 @@
     "contador" : 0
   },
   {
-    "productos" : "Elixir of Courage",
+    "producto" : "Elixir of Courage",
     "tipoBebida" : "Cerveza",
     "marca" : "Corona",
     "tamaño" : "710ML",
@@ -36,7 +36,7 @@
     "contador" : 0
   },
   {
-    "productos" : "Elixir of Strength",
+    "producto" : "Elixir of Strength",
     "tipoBebida" : "Whisky",
     "marca" : "Johnnie Walker Red Label",
     "tamaño" : "1L",
@@ -45,7 +45,7 @@
     "contador" : 0
   },
   {
-    "productos" : "Elixir of Stealth",
+    "producto" : "Elixir of Stealth",
     "tipoBebida" : "Ron",
     "marca" : "Flor de Caña",
     "tamaño" : "750ML",
@@ -54,7 +54,7 @@
     "contador" : 0
   },
   {
-    "productos" : "Disinhibition Potion",
+    "producto" : "Disinhibition Potion",
     "tipoBebida" : "Fernet",
     "marca" : "Branca",
     "tamaño" : "750ML",
@@ -63,7 +63,7 @@
     "contador" : 0
   },
   {
-    "productos" : "Elixir of Sweetening",
+    "producto" : "Elixir of Sweetening",
     "tipoBebida" : "Cola",
     "marca" : "Coca-Cola",
     "tamaño" :"2.25L" ,
