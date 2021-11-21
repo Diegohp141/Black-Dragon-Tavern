@@ -1,0 +1,74 @@
+[
+  {
+    "productos" : "Healing Potion",
+    "tipoBebida" : "Vino (Malbec)",
+    "marca" : "Elementos",
+    "tamaño" : "750ML",
+    "precio" : 250,
+    "id" : 1,
+    "contador" : 0
+  },
+  {
+    "productos" : "Charm Potion",
+    "tipoBebida" : "Vino (Torrontes)",
+    "marca" : "Elementos",
+    "tamaño" : "750ML",
+    "precio" : 350,
+    "id" : 2,
+    "contador" : 0
+  },
+  {
+    "productos" : "Mana Potion",
+    "tipoBebida" : "Gin",
+    "marca" : "Bombay Sapphire",
+    "tamaño" : "750ML",
+    "precio" : 3300,
+    "id" : 3,
+    "contador" : 0
+  },
+  {
+    "productos" : "Elixir of Courage",
+    "tipoBebida" : "Cerveza",
+    "marca" : "Corona",
+    "tamaño" : "710ML",
+    "precio" : 280,
+    "id" : 4,
+    "contador" : 0
+  },
+  {
+    "productos" : "Elixir of Strength",
+    "tipoBebida" : "Whisky",
+    "marca" : "Johnnie Walker Red Label",
+    "tamaño" : "1L",
+    "precio" : 2550,
+    "id" : 5,
+    "contador" : 0
+  },
+  {
+    "productos" : "Elixir of Stealth",
+    "tipoBebida" : "Ron",
+    "marca" : "Flor de Caña",
+    "tamaño" : "750ML",
+    "precio" : 1650,
+    "id" : 6,
+    "contador" : 0
+  },
+  {
+    "productos" : "Disinhibition Potion",
+    "tipoBebida" : "Fernet",
+    "marca" : "Branca",
+    "tamaño" : "750ML",
+    "precio" : 720,
+    "id" : 7,
+    "contador" : 0
+  },
+  {
+    "productos" : "Elixir of Sweetening",
+    "tipoBebida" : "Cola",
+    "marca" : "Coca-Cola",
+    "tamaño" :"2.25L" ,
+    "precio" : 233,
+    "id" : 8,
+    "contador" : 0
+  }
+]

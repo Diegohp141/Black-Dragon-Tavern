@@ -3,27 +3,15 @@ let click = 0;
 let totalCompra = 0;
 let carrito;
 
-class Bebida{
-  constructor(producto, tipoBebida, marca, tamaño, precio, id){
-    this.producto = producto;
-    this.tipoBebida = tipoBebida
-    this.marca = marca;
-    this.tamaño = tamaño;
-    this.precio = precio;
-    this.id = id
-    this.contador = 0;
-  }
-};
+
 //Array bebidas // Drinks
 const bebidas = [];
-bebidas.push(new Bebida(`Healing Potion`, `Vino (Malbec)`, `Elementos`, `750ML`, 250, 1));
-bebidas.push(new Bebida(`Charm Potion`, `Vino (Torrontes)`, `Elementos `, `750ML`, 350, 2));
-bebidas.push(new Bebida(`Mana Potion`,`Gin`, `Bombay Sapphire`, `750ML`, 3300,3));
-bebidas.push(new Bebida(`Elixir of Courage`, `Cerveza`, `Corona`, `710ML`, 280,4));
-bebidas.push(new Bebida(`Elixir of Strength`, `Whisky`, `Johnnie Walker Red Label`, `1L`, 2550,5));
-bebidas.push(new Bebida(`Elixir of Stealth`, `Ron`, `Flor de Caña`, `750ML`, 1650,6));
-bebidas.push(new Bebida(`disinhibition Potion`, `Fernet`, `Branca`, `750ML`, 720, 7));
-bebidas.push(new Bebida(`Elixir of Sweetening`, `Cola`, `Coca-Cola`, `2.25L`, 233,8));
+
+$.getJson('bebidas.json', function(data){
+  data.forEach(item => bebidas.push(item))
+  renderizar(bebidas);
+  funcionesCarrito(bebidas)
+})
 
 //selectores // selectors
 const htmlproductos = document.querySelector(`.productos`);
@@ -78,7 +66,7 @@ function renderizar(array){
     htmlproductos.appendChild(section);      
   });
 }
-renderizar(bebidas);
+
 
 //funcion formulario prevenir default
 formulario.addEventListener('submit',busqueda);
@@ -222,15 +210,17 @@ function vaciarHTMl(item){
 }
 
 //funcion principal para llenar el carrito //main function to fill the array cart
-bebidas.forEach(bebida => {
-  const boton = document.querySelector(`#boton${bebida.id}`);
-    boton.addEventListener("click",() => {
-    click = bebida.id;
-    cargarCarrito(bebida)    
-    llenarHTMl()
-    inputCarrito(carrito)
-    });  
-});
+function funcionesCarrito(bebidas){
+  bebidas.forEach(bebida => {
+    const boton = document.querySelector(`#boton${bebida.id}`);
+      boton.addEventListener("click",() => {
+      click = bebida.id;
+      cargarCarrito(bebida)    
+      llenarHTMl()
+      inputCarrito(carrito)
+      });  
+  });
+}
 
 //funciones para el input carrito
 
