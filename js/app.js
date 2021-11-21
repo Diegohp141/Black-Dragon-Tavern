@@ -257,7 +257,7 @@ function add (item, valorInput, tprecio) {
 function resta (item, valorInput, tprecio) {
   const BotonAdd = document.querySelector(`#rest${item.id}`)
   BotonAdd.addEventListener("click",() =>{
-    item.contador--;
+    item.contador --;
     totalCompra = totalCompra - item.precio;
     valorInput.value = item.contador
     bebidas.find(bebida => {
@@ -273,6 +273,9 @@ function resta (item, valorInput, tprecio) {
     actualizarStorage()    
     tprecio.textContent = item.precio * item.contador;
     total.textContent = `Total ${totalCompra}`;
+    if (totalCompra == 0){
+      total.textContent = ""
+    }
   })
 }
 
@@ -292,11 +295,14 @@ function usoInput(item, valorInput, tprecio){
       if (item.contador == 0 ){
         carrito = carrito.filter(elemento => elemento.contador != 0 );
         const eliminarUl = document.querySelector(`#producto${item.id}`)
-        eliminarUl.parentElement.removeChild(eliminarUl);
-      }
+        eliminarUl.parentElement.removeChild(eliminarUl);       
+      }      
       actualizarStorage()      
       tprecio.textContent = item.precio * item.contador;
-      total.textContent = `Total ${totalCompra}`; 
+      total.textContent = `Total ${totalCompra}`;
+      if (totalCompra == 0){
+        total.textContent = ""
+      }
     }
   })
 }
