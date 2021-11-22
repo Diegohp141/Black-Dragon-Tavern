@@ -54,7 +54,8 @@ function renderizar(array){
         <div class="card">
           <div class="card-body d-flex flex-column  align-items-center">
             <h3 class="card-title fonth">${bebida.producto}</h3>
-            <h3 class="card-title fonth">${bebida.tipoBebida} ${bebida.marca}</h3>
+            <h3 class="card-title fonth">${bebida.tipoBebida}</h3>
+            <h3 class="card-title fonth">${bebida.marca}</h3>
             <img src="img/producto${bebida.id}.png" alt="${bebida.tipoBebida} ${bebida.marca}">
             <p class="card-text fontSize2">$${bebida.precio}</p>
             <button id="boton${bebida.id}" type="button" class=" w-75 btn btn-outline-success fontSize2">Agregar al carrito</button>
