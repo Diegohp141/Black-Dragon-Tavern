@@ -115,3 +115,26 @@ h1,h2 {
 .border{
   border: solid black 1px;
 }
+
+.redes{
+  display: flex;
+  justify-content: center;
+  
+}
+
+.redes a i{
+  font-size: 3rem;
+  color: white;
+}
+
+.fa-facebook:hover {
+  color: #1977f3; }
+
+.fa-instagram:hover {
+  color: #cc48e7; }
+
+.fa-twitter:hover {
+  color: #55adee; }
+
+.fa-envelope:hover {
+  color: #d64a3a; }
