@@ -3,11 +3,10 @@ let click = 0;
 let totalCompra = 0;
 let carrito;
 
-
 //Array bebidas // Drinks
 const bebidas = [];
 
-$.getJSON('../bebidas.json', function(data){
+$.getJSON('bebidas.json', function(data){
   data.forEach(item => bebidas.push(item))
   renderizar(bebidas);
   funcionesCarrito(bebidas)
@@ -60,8 +59,7 @@ function renderizar(array){
             <p class="card-text fontSize2">$${bebida.precio}</p>
             <button id="boton${bebida.id}" type="button" class=" w-75 btn btn-outline-success fontSize2">Agregar al carrito</button>
           </div>
-        </div>
-            
+        </div>            
       `;      
     htmlproductos.appendChild(section);      
   });
@@ -384,3 +382,5 @@ h2.fadeIn(3000)
 
 /* icono mas: <i class="far fa-plus-square"></i> */
 /* icono menos: <i class="far fa-minus-square"></i>*/
+
+console.log("perro");
